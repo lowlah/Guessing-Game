@@ -13,7 +13,7 @@ levels.forEach(level=>{
         levels.forEach((mode) => mode.classList.remove("selected"));
         this.classList.add("selected");
 
-        gameLevel= this.innerHTML;
+        gameLevel = this.innerHTML;
     });
    
 });

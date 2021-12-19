@@ -12,16 +12,18 @@ let levelButton= levels.find((level)=>{
 });
 
 let gameLevel=levelButton.innerHTML;
-//let squares = getSquares(gameLevel);
+let squares = getSquares(gameLevel);
 
 levels.forEach(level=>{
     level.addEventListener("click",function(){
         levels.forEach((mode) => mode.classList.remove("selected"));
         this.classList.add("selected");
-        //gameLevel = this.innerHTML;
-        //squares = getSquares(gameLevel)
+        gameLevel = this.innerHTML;
+        //gameLevel=levelButton.innerHTML;
 
-       gameLevel = this.innerHTML;
+       squares = getSquares(gameLevel);
+
+       //gameLevel = this.innerHTML;
     });
    
 });
@@ -101,22 +103,22 @@ function setSquareWin(headerRgbString){
     });
 
 };
-
+// for selecting levels and returning mode of difficulty
 function getSquares(level) {
-    const tiles = Array.from(
-      document.getElementsByClassName(" mode")
+    const box = Array.from(
+      document.getElementsByClassName("square")
     );
   
-    tiles.forEach((sq) => sq.classList.remove("hidden"));
+    box.forEach((sq) => sq.classList.remove("hidden"));
   
     if (level === "Easy") {
-      const hiddenSquares = tiles.slice(3, tiles.length);
-      const squareBoxes = tiles.slice(0, 3);
+      const hiddenSquares = box.slice(3, box.length);
+      const squares = box.slice(0, 3);
   
       hiddenSquares.forEach((sq) => sq.classList.add("hidden"));
   
-      return squareBoxes;
+      return squares;
     }
   
-    return tiles;
+    return box;
   }
